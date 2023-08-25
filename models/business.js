@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../data/db');
 
-const User = sequelize.define("users", {
+const Business = sequelize.define("business", {
     businessId: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -32,6 +32,10 @@ const User = sequelize.define("users", {
         type: DataTypes.STRING,
         allowNull: false
     },
+    business_web: {
+        type: DataTypes.STRING,
+        allowNull: false
+    },
     business_logo: {
         type: DataTypes.STRING,
         allowNull: false
@@ -46,15 +50,22 @@ const User = sequelize.define("users", {
 
 
 async function syncSQL() {
-    await Category.sync({alter: true})
-    console.info("Category table is added!")
+    await Business.sync({alter: true})
+    console.info("Business table is added!")
 
-    if (await Category.count() === 0) {
+    if (await Business.count() === 0) {
 
-        await Category.bulkCreate([
+        await Business.bulkCreate([
             {
-                username: "admin",
-                password: "admin"
+                business_name: "Coffe House",
+                business_adress: "Saliha Sokak, No:147, Kadıköy / İstanbul",
+                business_tel: "0532 654 7624",
+                business_open: "09:00",
+                business_close: "23:00",
+                business_ig: "https://instagram.com/sonatipek",
+                business_web: "https://sonatipek.com",
+                business_logo: "placeholder.webp",
+                business_bg: "placeholder.webp"
             }
 
         ])
@@ -66,4 +77,4 @@ async function syncSQL() {
 
 syncSQL();
 
-module.exports=User;
+module.exports=Business;

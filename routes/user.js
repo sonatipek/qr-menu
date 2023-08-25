@@ -7,6 +7,7 @@ const router = express.Router();
 // Create Models
 const Product = require('../models/product');
 const Category = require('../models/category');
+const Business = require('../models/business');
 
 // Poducts by Category
 router.use('/:categoryid', async (req, res) => {
@@ -19,9 +20,9 @@ router.use('/:categoryid', async (req, res) => {
             }
         });
         const categories = await Category.findAll({raw: true});
-        console.log(products[0]);
-        console.log(categories);
-        res.render("pages/index", {products: products, categories: categories, selectedCategory: categoryid});
+        const business = await Business.findAll({raw: true});
+        
+        res.render("pages/index", {products: products, categories: categories, selectedCategory: categoryid, business: business[0]});
     } catch (err) {
         console.log(err);
     }
