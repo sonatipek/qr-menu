@@ -1,0 +1,59 @@
+<div class="w-100 px-4 mt-2">
+    <i class="fa-solid fa-chevron-left"></i>
+</div>
+
+<div class="d-flex align-items-center justify-content-between px-4 mt-3">
+    <h1 class="h5">Edit</h1>
+
+    <a href="#" class="text-decoration-none fw-medium text-danger"><small>Ürünü Sil</small></a>
+</div> 
+
+<form class="row px-4">
+    <div class="col-6">
+        <p class="fw-medium mb-2"><small>Ürün Resmi</small></p>
+        <div class="d-flex flex-column align-items-center">
+            <img src="/img/placeholder.webp" alt="ürün resmi" class="img-fluid">
+            <a href="#" class="text-decoration-none mt-2">Değiştir <i class="fa-regular fa-pen-to-square"></i></a>
+        </div>
+    </div> 
+
+    <div class="col-6">
+        <label for="category" class="form-label fw-medium mb-2"><small>Kategori</small></label>
+        <select id="category" class="form-select">
+            <option selected>Seçim</option>
+            <option>...</option>
+        </select>
+    </div>
+
+    <div class="row mt-4">
+       <div class="col-9">
+            <label for="bussiness_name" class="form-label d-flex align-items-center justify-content-between fw-medium">
+                <small>Ürün Adı</small>
+                <span class="text-secondary fw-normal"><small><i class="fa-solid fa-circle-exclamation"></i> Örn: Klasik Hamburger</small></span>
+            </label>
+            <input type="text" class="form-control" id="bussiness_name" name="bussiness_name">
+       </div>
+
+       <div class="col-3">
+            <label for="bussiness_name" class="form-label d-flex align-items-center justify-content-between fw-medium">
+                <small>Fiyat</small>
+            </label>
+            <input type="text" class="form-control" id="bussiness_name" name="bussiness_name">
+       </div>
+    </div>
+
+    <div class="mt-4">
+        <label for="business_adress" class="form-label d-flex align-items-center justify-content-between fw-medium">
+            <small>Açıklama</small>
+            <span class="text-secondary fw-normal"><small><i class="fa-solid fa-circle-exclamation"></i> Ürünün açıklamasını giriniz.</small></span>
+        </label>
+        <textarea class="form-control" id="business_adress" name="business_adress" rows="3"></textarea>
+    </div>
+
+    <div class="row mx-auto my-4">
+        <a href="#" class="col-3 btn btn-secondary py-3"><i class="fa-solid fa-x"></i></a>
+        <div class="col-1"></div>
+        <button type="submit" class="col-8 btn btn-secondary py-3 fw-medium">Değişiklikleri Kaydet</button>
+    </div>
+    
+</form>
