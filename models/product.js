@@ -31,12 +31,12 @@ const Product = sequelize.define("products", {
 });
 
 async function syncSQL() {
-    await Blog.sync({alter: true})
+    await Product.sync({alter: true})
     console.info("Blog table is added!")
 
-    const count = await Blog.count()
+    const count = await Product.count()
     if (count === 0) {
-        Blog.create({
+        Product.create({
             title: "Hamburger",
             amount: "56",
             description: "100 gram dana eti, turşu, domates , marul soğan ve özel sos.",

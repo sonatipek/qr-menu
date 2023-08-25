@@ -1,5 +1,9 @@
 <div class="px-4 mt-4">
-    <h3 class="h2 fw-semibold mb-3">Hamburger</h3>
+    <% categories.forEach(category => { %>
+        <% if ( category.categoryid == selectedCategory) { %>
+            <h3 class="h2 fw-semibold mb-3"><%= category.ca %></h3>
+        <% } %>
+    <% }) %>
 
     <%- include('./card') %>
 
