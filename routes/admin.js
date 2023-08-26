@@ -14,9 +14,16 @@ const Users = require('../models/users');
 
 // Admin Dashboard
 router.get('/', async (req, res) => {
+    try {
+        const [businessInformations, ] = await Business.findAll({raw: true})
 
-    
-    res.render('admin/admin-detail')
+
+        
+        res.render('admin/admin-detail', {businessInformations: businessInformations})
+    } catch (err) {
+        console.log(err);
+    }
+
 });
 
 // Admin Get Login

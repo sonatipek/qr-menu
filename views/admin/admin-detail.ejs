@@ -25,7 +25,7 @@
                 İşletme Adı
                 <span class="text-secondary fw-normal"><small><i class="fa-solid fa-circle-exclamation"></i> Örn: Coffe House</small></span>
             </label>
-            <input type="text" class="form-control" id="bussiness_name" name="bussiness_name">
+            <input type="text" class="form-control" id="bussiness_name" name="bussiness_name" value="<%= businessInformations.business_name %>">
         </div>
 
         <div class="mt-4">
@@ -33,7 +33,7 @@
                 İşletme Adresi
                 <span class="text-secondary fw-normal"><small><i class="fa-solid fa-circle-exclamation"></i> İşletmeni adresini kısaca giriniz</small></span>
             </label>
-            <textarea class="form-control" id="business_adress" name="business_adress" rows="3"></textarea>
+            <textarea class="form-control" id="business_adress" name="business_adress" rows="3"><%= businessInformations.business_adress %></textarea>
         </div>
 
         <div class="mt-4">
@@ -41,7 +41,7 @@
                 Telefon Numarası
                 <span class="text-secondary fw-normal"><small><i class="fa-solid fa-circle-exclamation"></i> Örn: 05326245648</small></span>
             </label>
-            <input type="number" class="form-control" id="business_tel" name="business_tel">
+            <input type="text" class="form-control" id="business_tel" name="business_tel" value="<%= businessInformations.business_tel %>">
         </div>
 
         <div class="mt-4 row">
@@ -49,14 +49,14 @@
                 <label for="business_open" class="form-label fw-medium">
                     Açılış
                 </label>
-                <input type="number" class="form-control" id="business_open" name="business_open">
+                <input type="text" class="form-control" id="business_open" name="business_open" value="<%= businessInformations.business_open %>">
             </div>
 
             <div class="col-3">
                 <label for="business_close" class="form-label fw-medium">
                     Kapanış
                 </label>
-                <input type="number" class="form-control" id="business_close" name="business_close">
+                <input type="text" class="form-control" id="business_close" name="business_close" value="<%= businessInformations.business_close %>">
             </div>
 
             <div class="col-6">
@@ -68,7 +68,7 @@
             <label for="business_ig" class="form-label d-flex align-items-center justify-content-between fw-medium">
                 Instagram
             </label>
-            <input type="number" class="form-control" id="business_ig" name="business_ig" placeholder="https://instagram/kullanıcıadı">
+            <input type="text" class="form-control" id="business_ig" name="business_ig" placeholder="https://instagram/kullanıcıadı" value="<%= businessInformations.business_ig %>">
         </div>
 
     </div>
@@ -78,7 +78,7 @@
         <div>
             <h1 class="h5 fw-medium">Logo</h1>
             <div class="d-flex flex-column align-items-center justify-content-center">
-                <img src="/img/placeholder.webp" class="img-fluid" alt="Mekan logosu" style="height: 8.8rem; width: 9.75rem;">
+                <img src="/img/<%= businessInformations.business_logo %>" class="img-fluid" alt="Mekan logosu" style="height: 8.8rem; width: 9.75rem;">
                 <a href="#" class="text-decoration-none">Değiştir <i class="fa-regular fa-pen-to-square"></i></a>
             </div>
         </div>
@@ -86,7 +86,7 @@
         <div>
             <h1 class="h5 fw-medium">Arka Plan</h1>
             <div class="d-flex flex-column align-items-center justify-content-center">
-                <img src="/img/placeholder.webp" class="img-fluid" alt="Mekan arka plan resmi" style="height: 8.8rem; width: 9.75rem;">
+                <img src="/img/<%= businessInformations.business_bg %>" class="img-fluid" alt="Mekan arka plan resmi" style="height: 8.8rem; width: 9.75rem;">
                 <a href="#" class="text-decoration-none">Değiştir <i class="fa-regular fa-pen-to-square"></i></a>
             </div>
         </div>
