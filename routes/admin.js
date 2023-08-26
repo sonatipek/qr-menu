@@ -1,19 +1,64 @@
-// // Requirements
-// const express = require('express');
-// const db = require('../data/db');
-// const { upload } = require('../helpers/imageupload');
-// const fs = require('fs');
+// Requirements
+const express = require('express');
+const { upload } = require('../helpers/imageupload');
+const fs = require('fs');
 
-// // Create router
-// const router = express.Router();
+// Create router
+const router = express.Router();
 
-// // Create Models
-// const Blog = require('../models/blog');
-// const Category = require('../models/category');
+// Create Models
+const Product = require('../models/product');
+const Category = require('../models/category');
+const Business = require('../models/business');
+const Users = require('../models/users');
+
+// Admin Dashboard
+router.get('/', async (req, res) => {
+
+    
+    res.render('admin/admin-detail')
+});
+
+// Admin Get Login
+router.get('/login', (req, res) => {
+    res.render('admin/index')
+});
+
+// Admin Post Login
+router.post('/login', async (req, res) => {
+    const username = req.body.username, password = req.body.password;
+
+    try {
+        const user = await Users.findOne({
+            raw:true,
+            where: {
+                username: username
+            }
+        });
+
+        if(!user){
+            return res.render('admin/', {
+                title: "login",
+                message: "Kullanıcı bulunamadı!"
+            })
+        }
+
+        if (password != user.password) {
+            return res.render('admin/', {
+                title: "login",
+                message: "Parola hatalı!"
+            })
+        }
+        res.redirect('/admin')
+
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 
-// // !Category Routes
-// // Get Category Create Page
+// !Category Routes
+// Get Category Create Page
 // router.get('/category/create', (req, res) => {
 //     res.render('admin/category-create');
 // });
@@ -219,4 +264,4 @@
 //     }
 // });
 
-// module.exports=router;
+module.exports=router;

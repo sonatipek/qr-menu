@@ -1,6 +1,12 @@
 <img src="/img/giris_illustration.svg" class="mx-auto d-block mt-5" alt="giris resmi">
 
-<form class="px-4" action="#" method="POST">
+<form class="px-4" action="/admin/login" method="POST">
+    <% if (typeof message != "undefined") { %>
+      <div class="text-danger px-4 py-3 bg-dark rounded text-center my-3 mb-4">
+        <i class="fa-solid fa-circle-xmark"></i>
+        <%= message %>
+      </div>
+    <% } %>
 
     <div class="mb-3">
       <label for="username" class="form-label">Kullanıcı Adı</label>
@@ -9,7 +15,7 @@
 
     <div class="mb-3">
       <label for="password" class="form-label">Şifre</label>
-      <input type="password" class="form-control" id="password" placeholder="*******" required>
+      <input type="password" class="form-control" id="password" name="password" placeholder="*******" required>
     </div>
 
     <button type="submit" class="btn w-100 btn-secondary py-3 fw-medium">Giriş Yap</button>

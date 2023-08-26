@@ -2,12 +2,6 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../data/db');
 
 const User = sequelize.define("users", {
-    userid: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        allowNull: false, 
-        primaryKey: true
-    },
     username:{
         type: DataTypes.STRING,
         allowNull: false,
@@ -22,12 +16,12 @@ const User = sequelize.define("users", {
 
 
 async function syncSQL() {
-    await Category.sync({alter: true})
+    await User.sync({alter: true})
     console.info("Category table is added!")
 
-    if (await Category.count() === 0) {
+    if (await User.count() === 0) {
 
-        await Category.bulkCreate([
+        await User.bulkCreate([
             {
                 username: "admin",
                 password: "admin"

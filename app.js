@@ -13,14 +13,14 @@ const PORT = 3000;
 const app = express()
 
 // Middlewares
-app.use('/libs', express.static(path.join(__dirname, 'node_modules'))); //you can give an alias for static folder if you want
+app.use('/libs', express.static(path.join(__dirname, 'node_modules')));
 app.use(express.static(path.join(__dirname, 'public')));
-app.set("view engine", 'ejs') // you can use any template engine
+app.set("view engine", 'ejs') 
 app.use(express.urlencoded({extended: true}))
 
 
 // !Routes
-// app.use('/admin', adminRoutes); //you can set a default startup path
+app.use('/admin', adminRoutes);
 app.use(userRoutes);
 
 
