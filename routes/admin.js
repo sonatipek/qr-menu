@@ -66,11 +66,22 @@ router.post('/login', async (req, res) => {
 router.get('/categories', async (req, res) => {
     let categories = await Category.findAll({raw:true});
     
-    
-    
     res.render('admin/category-list', {categories: categories});
 })
 
+// Get Categori Edit Page
+router.get('/categories/:categoryid', async (req, res) => {
+    let categoryID = req.params.categoryid;
+    let category = await Category.findOne({
+        raw: true,
+        where: {
+            categoryid: categoryID
+        }
+    });
+    console.log(category);
+
+    res.render('admin/category-edit', {category: category})
+})
 
 // !Category Routes
 // Get Category Create Page
