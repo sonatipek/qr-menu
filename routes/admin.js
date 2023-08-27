@@ -64,15 +64,15 @@ router.post('/login', async (req, res) => {
 // !Category Routes
 // Get Category List
 router.get('/categories', async (req, res) => {
-    let categories = await Category.findAll({raw:true});
+    const categories = await Category.findAll({raw:true});
     
     res.render('admin/category-list', {categories: categories});
 })
 
 // Get Categori Edit Page
 router.get('/categories/:categoryid', async (req, res) => {
-    let categoryID = req.params.categoryid;
-    let category = await Category.findOne({
+    const categoryID = req.params.categoryid;
+    const category = await Category.findOne({
         raw: true,
         where: {
             categoryid: categoryID
@@ -90,16 +90,16 @@ router.get('/category/create', (req, res) => {
 // !Product Routes
 // Get Product List
 router.get('/products', async (req, res) => {
-    let products = await Product.findAll({raw:true});
+    const products = await Product.findAll({raw:true});
     
     res.render('admin/product-list', {products: products});
 })
 
 // Get Product Edit Page
 router.get('/products/:productid', async (req, res) => {
-    let categories = await Category.findAll({raw:true});
-    let productID = req.params.productid;
-    let product = await Product.findOne({
+    const categories = await Category.findAll({raw:true});
+    const productID = req.params.productid;
+    const product = await Product.findOne({
         raw: true,
         where: {
             productid: productID
@@ -110,10 +110,14 @@ router.get('/products/:productid', async (req, res) => {
     res.render('admin/product-edit', {product: product, categories: categories})
 })
 
-// Get Category Create Page
-router.get('/category/create', (req, res) => {
-    res.render('admin/category-add');
+// Get Product Create Page
+router.get('/product/create', async (req, res) => {
+    const categories = await Category.findAll({raw:true});
+    
+    res.render('admin/product-add', {categories: categories});
 });
+
+
 // !Category Routes
 // Get Category Create Page
 // router.get('/category/create', (req, res) => {
