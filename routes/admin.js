@@ -78,11 +78,14 @@ router.get('/categories/:categoryid', async (req, res) => {
             categoryid: categoryID
         }
     });
-    console.log(category);
 
     res.render('admin/category-edit', {category: category})
 })
 
+// Get Category Create Page
+router.get('/category/create', (req, res) => {
+    res.render('admin/category-add');
+});
 // !Category Routes
 // Get Category Create Page
 // router.get('/category/create', (req, res) => {
