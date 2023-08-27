@@ -86,6 +86,32 @@ router.get('/categories/:categoryid', async (req, res) => {
 router.get('/category/create', (req, res) => {
     res.render('admin/category-add');
 });
+
+// !Product Routes
+// Get Product List
+router.get('/products', async (req, res) => {
+    let products = await Product.findAll({raw:true});
+    
+    res.render('admin/product-list', {products: products});
+})
+
+// Get Categori Edit Page
+router.get('/categories/:categoryid', async (req, res) => {
+    let categoryID = req.params.categoryid;
+    let category = await Category.findOne({
+        raw: true,
+        where: {
+            categoryid: categoryID
+        }
+    });
+
+    res.render('admin/category-edit', {category: category})
+})
+
+// Get Category Create Page
+router.get('/category/create', (req, res) => {
+    res.render('admin/category-add');
+});
 // !Category Routes
 // Get Category Create Page
 // router.get('/category/create', (req, res) => {
