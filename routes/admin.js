@@ -11,6 +11,7 @@ const Product = require('../models/product');
 const Category = require('../models/category');
 const Business = require('../models/business');
 const Users = require('../models/users');
+const { error } = require('console');
 
 // Admin Dashboard
 router.get('/', async (req, res) => {
@@ -22,6 +23,15 @@ router.get('/', async (req, res) => {
         console.log(err);
     }
 
+});
+
+// Post Admin Dasboard
+router.post('/', async (req, res ) =>  {
+    try {
+        
+    } catch (err) {
+        console.error(err);
+    }
 });
 
 // Admin Get Login
