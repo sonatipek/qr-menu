@@ -26,13 +26,13 @@ router.get('/', async (req, res) => {
 });
 
 // Post Admin Dasboard
-router.post('/', async (req, res ) =>  {
-    try {
+// router.post('/', async (req, res ) =>  {
+//     try {
         
-    } catch (err) {
-        console.error(err);
-    }
-});
+//     } catch (err) {
+//         console.error(err);
+//     }
+// });
 
 // Admin Get Login
 router.get('/login', (req, res) => {
@@ -95,6 +95,25 @@ router.get('/categories/:categoryid', async (req, res) => {
 // Get Category Create Page
 router.get('/category/create', (req, res) => {
     res.render('admin/category-add');
+});
+
+// Add Category - Post 
+router.post('/category/create', async (req, res) => {
+    try {
+        if (req.body.category_name) {
+            await Category.create({
+                category_name: req.body.category_name,
+            });
+            res.redirect('/admin/categories?action=create');
+        }
+        else{
+            res.redirect('/admin/category/create?action=isNull');
+        }
+            
+
+    } catch (err) {
+        console.error(err)
+    }
 });
 
 // !Product Routes
