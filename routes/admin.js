@@ -105,7 +105,6 @@ router.get('/products/:productid', async (req, res) => {
             productid: productID
         }
     });
-    console.log(categories)
 
     res.render('admin/product-edit', {product: product, categories: categories})
 })

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <%- include('../partials/head', {title: "Admin Girişi"}) %>
+    <%- include('../partials/head', {title: "Admin Paneli"}) %>
     
 </head>
 <body>
@@ -10,8 +10,8 @@
         <h1 class="h5 fw-semibold">Menü İşlemleri</h1>
 
         <div class="fw-medium text-primary d-flex justify-content-between">
-            <a href="#" class="text-decoration-none">Kategorileri Düzenle</a>
-            <a href="#" class="text-decoration-none">Ürünleri Düzenle</a>
+            <a href="/admin/categories" class="text-decoration-none">Kategorileri Düzenle</a>
+            <a href="/admin/products" class="text-decoration-none">Ürünleri Düzenle</a>
 
         </div>
     </div>
@@ -96,7 +96,7 @@
 
     <!-- Buttonlar -->
     <div class="row align-items-center justify-content-evenly px-4 my-4">
-        <a href="#" class="col-3 btn btn-secondary px-4 py-3"><i class="fa-solid fa-x"></i></a>
+        <a href="/" class="col-3 btn btn-secondary px-4 py-3"><i class="fa-solid fa-x"></i></a>
         <button type="submit" class="col-8 btn btn-secondary px-4 py-3 fw-medium">Değişiklikleri Kaydet</button>
     </div>
 
