@@ -1,59 +1,78 @@
-<div class="w-100 px-4 mt-2">
-    <i class="fa-solid fa-chevron-left"></i>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head', {title: "Admin Girişi"}) %>
+    
+</head>
+<body>
 
-<div class="d-flex align-items-center justify-content-between px-4 mt-3">
-    <h1 class="h5">Edit</h1>
-
-    <a href="#" class="text-decoration-none fw-medium text-danger"><small>Ürünü Sil</small></a>
-</div> 
-
-<form class="row px-4">
-    <div class="col-6">
-        <p class="fw-medium mb-2"><small>Ürün Resmi</small></p>
-        <div class="d-flex flex-column align-items-center">
-            <img src="/img/placeholder.webp" alt="ürün resmi" class="img-fluid">
-            <a href="#" class="text-decoration-none mt-2">Değiştir <i class="fa-regular fa-pen-to-square"></i></a>
-        </div>
-    </div> 
-
-    <div class="col-6">
-        <label for="category" class="form-label fw-medium mb-2"><small>Kategori</small></label>
-        <select id="category" class="form-select">
-            <option selected>Seçim</option>
-            <option>...</option>
-        </select>
-    </div>
-
-    <div class="row mt-4">
-       <div class="col-9">
-            <label for="bussiness_name" class="form-label d-flex align-items-center justify-content-between fw-medium">
-                <small>Ürün Adı</small>
-                <span class="text-secondary fw-normal"><small><i class="fa-solid fa-circle-exclamation"></i> Örn: Klasik Hamburger</small></span>
-            </label>
-            <input type="text" class="form-control" id="bussiness_name" name="bussiness_name">
-       </div>
-
-       <div class="col-3">
-            <label for="bussiness_name" class="form-label d-flex align-items-center justify-content-between fw-medium">
-                <small>Fiyat</small>
-            </label>
-            <input type="text" class="form-control" id="bussiness_name" name="bussiness_name">
-       </div>
-    </div>
-
-    <div class="mt-4">
-        <label for="business_adress" class="form-label d-flex align-items-center justify-content-between fw-medium">
-            <small>Açıklama</small>
-            <span class="text-secondary fw-normal"><small><i class="fa-solid fa-circle-exclamation"></i> Ürünün açıklamasını giriniz.</small></span>
-        </label>
-        <textarea class="form-control" id="business_adress" name="business_adress" rows="3"></textarea>
-    </div>
-
-    <div class="row mx-auto my-4">
-        <a href="#" class="col-3 btn btn-secondary py-3"><i class="fa-solid fa-x"></i></a>
-        <div class="col-1"></div>
-        <button type="submit" class="col-8 btn btn-secondary py-3 fw-medium">Değişiklikleri Kaydet</button>
+    <div class="w-100 px-4 mt-2">
+        <i class="fa-solid fa-chevron-left"></i>
     </div>
     
-</form>
+    <div class="d-flex align-items-center justify-content-between px-4 mt-3">
+        <h1 class="h5">Edit</h1>
+    
+        <a href="#" class="text-decoration-none fw-medium text-danger"><small>Ürünü Sil</small></a>
+    </div> 
+    
+    <form class="row px-4">
+        <div class="col-6">
+            <p class="fw-medium mb-2"><small>Ürün Resmi</small></p>
+            <div class="d-flex flex-column align-items-center">
+                <img src="/img/<%= product.image %>" alt="ürün resmi" class="img-fluid">
+                <a href="#" class="text-decoration-none mt-2">Değiştir <i class="fa-regular fa-pen-to-square"></i></a>
+            </div>
+        </div> 
+    
+        <div class="col-6">
+            <label for="category" class="form-label fw-medium mb-2"><small>Kategori</small></label>
+            <select id="category" class="form-select">
+                <% categories.forEach(category => { %>
+                    <% if (product.categoryid == category.categoryid) { %>
+                        <option selected value="<%= category.categoryid %>"><%= category.category_name %></option>
+                    <% } else { %>
+                        <option value="<%= category.categoryid %>"><%= category.category_name %></option>
+                     
+                    <% } %>
+                 
+                <% }) %>
+            </select>
+        </div>
+    
+        <div class="row mt-4">
+           <div class="col-9">
+                <label for="product_name" class="form-label d-flex align-items-center justify-content-between fw-medium">
+                    <small>Ürün Adı</small>
+                    <span class="text-secondary fw-normal"><small><i class="fa-solid fa-circle-exclamation"></i> Örn: Klasik Hamburger</small></span>
+                </label>
+                <input type="text" class="form-control" id="product_name" name="product_name" value="<%= product.title %>">
+           </div>
+    
+           <div class="col-3">
+                <label for="product_amount" class="form-label d-flex align-items-center justify-content-between fw-medium">
+                    <small>Fiyat</small>
+                </label>
+                <input type="number" class="form-control" id="product_amount" name="product_amount" value="<%= product.amount %>">
+           </div>
+        </div>
+    
+        <div class="mt-4">
+            <label for="product_description" class="form-label d-flex align-items-center justify-content-between fw-medium">
+                <small>Açıklama</small>
+                <span class="text-secondary fw-normal"><small><i class="fa-solid fa-circle-exclamation"></i> Ürünün açıklamasını giriniz.</small></span>
+            </label>
+            <textarea class="form-control" id="product_description" name="product_description" rows="3"><%= product.description %></textarea>
+        </div>
+    
+        <div class="row mx-auto my-4">
+            <a href="#" class="col-3 btn btn-secondary py-3"><i class="fa-solid fa-x"></i></a>
+            <div class="col-1"></div>
+            <button type="submit" class="col-8 btn btn-secondary py-3 fw-medium">Değişiklikleri Kaydet</button>
+        </div>
+        
+    </form>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html> 

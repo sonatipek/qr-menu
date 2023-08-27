@@ -95,17 +95,19 @@ router.get('/products', async (req, res) => {
     res.render('admin/product-list', {products: products});
 })
 
-// Get Categori Edit Page
-router.get('/categories/:categoryid', async (req, res) => {
-    let categoryID = req.params.categoryid;
-    let category = await Category.findOne({
+// Get Product Edit Page
+router.get('/products/:productid', async (req, res) => {
+    let categories = await Category.findAll({raw:true});
+    let productID = req.params.productid;
+    let product = await Product.findOne({
         raw: true,
         where: {
-            categoryid: categoryID
+            productid: productID
         }
     });
+    console.log(categories)
 
-    res.render('admin/category-edit', {category: category})
+    res.render('admin/product-edit', {product: product, categories: categories})
 })
 
 // Get Category Create Page
