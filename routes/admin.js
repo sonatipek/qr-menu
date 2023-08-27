@@ -16,9 +16,7 @@ const Users = require('../models/users');
 router.get('/', async (req, res) => {
     try {
         const [businessInformations, ] = await Business.findAll({raw: true})
-
-
-        
+  
         res.render('admin/admin-detail', {businessInformations: businessInformations})
     } catch (err) {
         console.log(err);
@@ -62,6 +60,16 @@ router.post('/login', async (req, res) => {
         console.log(error);
     }
 });
+
+// !Category Routes
+// Get Category List
+router.get('/categories', async (req, res) => {
+    let categories = await Category.findAll({raw:true});
+    
+    
+    
+    res.render('admin/category-list', {categories: categories});
+})
 
 
 // !Category Routes

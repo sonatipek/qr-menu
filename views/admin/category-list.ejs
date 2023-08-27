@@ -1,18 +1,35 @@
-<div class="w-100 px-4 mt-2">
-    <i class="fa-solid fa-chevron-left"></i>
-</div>
+<!DOCTYPE html>
+<html lang="tr-TR">
+<head>
+    <%- include('../partials/head', {title: "Kategori Listesi"}) %>
+    
+</head>
+<body>
+  
+    <div class="w-100 px-4 mt-2">
+        <i class="fa-solid fa-chevron-left"></i>
+    </div>
+    
+    <div class="d-flex align-items-center justify-content-between px-4 mt-3">
+        <h1 class="h5">Kategoriler</h1>
+    
+        <a href="/admin/category/create" class="text-decoration-none fw-medium"><small>Kategori Ekle <i class="fa-solid fa-plus"></i></small></a>
+    
+    </div>
+    
+    <!-- Kategori Card -->
+    <div class="px-4 mt-3">
+        <% categories.forEach(category => { %>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center border-bottom">
+                    <span><%= category.category_name %></span>
+                    <a href="/admin/categories/<%= category.categoryid %>" class="fw-medium text-decoration-none"><small>Edit</small></a></li>
+            </ul>
 
-<div class="d-flex align-items-center justify-content-between px-4 mt-3">
-    <h1 class="h5">Kategoriler</h1>
+         
+        <% }) %>
+    </div>
 
-    <a href="#" class="text-decoration-none fw-medium"><small>Kategori Ekle <i class="fa-solid fa-plus"></i></small></a>
-
-</div>
-
-<!-- Kategori Card -->
-<div class="px-4 mt-3">
-    <span class="d-flex align-items-center justify-content-between border-bottom">
-        <p>Hamburger</p>
-        <a href="#" class="fw-medium text-decoration-none"><small>Edit</small></a>
-    </span>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html> 
