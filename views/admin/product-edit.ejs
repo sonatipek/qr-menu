@@ -20,12 +20,15 @@
 
     </div> 
     
-    <form class="row px-4">
+    <form class="row px-4" method="post" enctype="multipart/form-data">
         <div class="col-6">
             <p class="fw-medium mb-2"><small>Ürün Resmi</small></p>
             <div class="d-flex flex-column align-items-center">
                 <img src="/img/<%= product.image %>" alt="ürün resmi" class="img-fluid">
-                <a href="#" class="text-decoration-none mt-2">Değiştir <i class="fa-regular fa-pen-to-square"></i></a>
+                <input type="file" name="product_image" id="product_image" class="d-none">
+                <label for="product_image" class="text-decoration-none mt-2 text-primary" style="cursor: pointer;">
+                    Değiştir <i class="fa-regular fa-pen-to-square"></i>
+                </label>
             </div>
         </div> 
     
