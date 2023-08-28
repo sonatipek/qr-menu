@@ -12,8 +12,10 @@
     
     <div class="d-flex align-items-center justify-content-between px-4 mt-3">
         <h1 class="h5">Edit</h1>
-    
-        <a href="#" class="text-decoration-none fw-medium text-danger"><small>Ürünü Sil</small></a>
+        
+        <form action="/admin/category/delete/<%= category.categoryid %>" method="post">
+            <button type="submit" class="btn fw-medium text-danger"><small>Ürünü Sil</small></button>
+        </form>
     </div> 
     
     <form class="mt-4 px-4">
@@ -27,7 +29,7 @@
     
     <!-- Buttonlar -->
     <div class="row align-items-center justify-content-evenly px-4 my-4">
-        <a href="/admin/categories"" class="col-3 btn btn-secondary px-4 py-3"><i class="fa-solid fa-x"></i></a>
+        <a href="/admin/categories" class="col-3 btn btn-secondary px-4 py-3"><i class="fa-solid fa-x"></i></a>
         <button type="submit" class="col-8 btn btn-secondary px-4 py-3 fw-medium">Değişiklikleri Kaydet</button>
     </div>
 

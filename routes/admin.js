@@ -11,7 +11,7 @@ const Product = require('../models/product');
 const Category = require('../models/category');
 const Business = require('../models/business');
 const Users = require('../models/users');
-const { error } = require('console');
+
 
 // Admin Dashboard
 router.get('/', async (req, res) => {
@@ -91,6 +91,22 @@ router.get('/categories/:categoryid', async (req, res) => {
 
     res.render('admin/category-edit', {category: category})
 })
+
+// Delete Category - POST
+router.post('/category/delete/:categoryid', async (req, res) => {
+    try {
+        const categoryID = req.params.categoryid;
+        await Category.destroy({
+            where:{
+                categoryid: categoryID
+            }
+        })
+
+        res.redirect('/admin/categories?action=delete')
+    } catch (err) {
+        console.error(err);
+    }
+});
 
 // Get Category Create Page
 router.get('/category/create', (req, res) => {
