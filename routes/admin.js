@@ -92,6 +92,30 @@ router.get('/categories/:categoryid', async (req, res) => {
     res.render('admin/category-edit', {category: category})
 })
 
+// Update Category - POST
+router.post('/categories/:categoryid', async (req, res) => {
+    const categoryID = req.params.categoryid;
+    const categoryIDServer = req.body.category_id;
+    const categoryName = req.body.category_name;
+
+    try {
+        if (categoryID == categoryIDServer) {       
+            await Category.update({
+                category_name: categoryName
+            },{
+                where: {
+                    categoryid: categoryID
+                }
+            })
+
+            return res.redirect('/admin/categories?action=update') 
+        }
+            res.redirect('/admin/categories?action=error') 
+    } catch (error) {
+        console.error(error);
+    }
+});
+
 // Delete Category - POST
 router.post('/category/delete/:categoryid', async (req, res) => {
     try {
@@ -113,7 +137,7 @@ router.get('/category/create', (req, res) => {
     res.render('admin/category-add');
 });
 
-// Add Category - Post 
+// Add Category - POST
 router.post('/category/create', async (req, res) => {
     try {
         if (req.body.category_name) {
