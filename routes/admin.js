@@ -156,6 +156,8 @@ router.post('/category/create', async (req, res) => {
     }
 });
 
+
+
 // !Product Routes
 // Get Product List
 router.get('/products', async (req, res) => {
@@ -177,6 +179,23 @@ router.get('/products/:productid', async (req, res) => {
 
     res.render('admin/product-edit', {product: product, categories: categories})
 })
+
+// Delete Product - POST
+router.post('/product/delete/:productid', async (req, res ) =>  {
+    try {
+        const productID = req.params.productid;
+
+        await Product.destroy({
+            where:{
+                productid: productID
+            }
+        });
+
+        res.redirect('/admin/products?action=delete')
+    } catch (err) {
+        
+    }
+});
 
 // Get Product Create Page
 router.get('/product/create', async (req, res) => {
