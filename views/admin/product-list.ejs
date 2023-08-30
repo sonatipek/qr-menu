@@ -18,14 +18,33 @@
     </div>
     
     <!-- Ürün Card -->
-    <div class="px-4 mt-3">
-        <% products.forEach(product => { %>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item d-flex justify-content-between align-items-center border-bottom">
-                    <span><%= product.title %></span>
-                    <a href="/admin/products/<%= product.productid %>" class="fw-medium text-decoration-none"><small>Edit</small></a></li>
-            </ul>
-    
+    <div class="px-4 mt-3 accordion accordion-flush" id="accordionFlushExample">
+        <% categories.forEach(category=> { %>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-<%= category.categoryid %>" aria-expanded="false" aria-controls="flush-<%= category.categoryid %>">
+                    <%= category.category_name %>
+                  </button>
+                </h2>
+                <div id="flush-<%= category.categoryid %>" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <ul class="list-group list-group-flush">
+                            <% products.forEach(product => { %>
+                                <% if (category.categoryid == product.categoryid) { %>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <span><%= product.title %></span>
+                                        <a href="/admin/products/<%= product.productid %>" class="fw-medium text-decoration-none"><small>Edit</small></a>
+                                    </li>
+                                 
+                                <% } %>
+                             
+                            <% }) %>
+                        </ul>
+                    </div>
+                </div>
+              </div>
+  
         <% }) %>
     </div>
 

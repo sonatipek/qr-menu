@@ -162,8 +162,9 @@ router.post('/category/create', async (req, res) => {
 // Get Product List
 router.get('/products', async (req, res) => {
     const products = await Product.findAll({raw:true});
+    const categories = await Category.findAll({raw:true});
     
-    res.render('admin/product-list', {products: products});
+    res.render('admin/product-list', {products: products, categories: categories});
 })
 
 // Get Product Edit Page
