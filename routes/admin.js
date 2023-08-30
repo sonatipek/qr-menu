@@ -11,6 +11,7 @@ const Product = require('../models/product');
 const Category = require('../models/category');
 const Business = require('../models/business');
 const Users = require('../models/users');
+const { where } = require('sequelize');
 
 
 // Admin Dashboard
@@ -25,14 +26,51 @@ router.get('/', async (req, res) => {
 
 });
 
-// Post Admin Dasboard
-// router.post('/', async (req, res ) =>  {
-//     try {
-        
-//     } catch (err) {
-//         console.error(err);
-//     }
-// });
+// Admin Dashboard - Update Business Informations
+router.post('/', upload.fields([{ name: 'business_bg'}, { name: 'business_logo'}]), async (req, res) => {
+    const businessName = req.body.bussiness_name,
+        businessID = req.body.server_businessid,
+        businessAdress = req.body.business_adress,
+        businessTel = req.body.business_tel,
+        businessOpen = req.body.business_open,
+        businessClose = req.body.business_close,
+        businessIg = req.body.business_ig,
+        businessWeb = req.body.business_web;
+    
+    try {
+        let businessLogo = req.body.server_logo;
+        let businessBg = req.body.server_bg;
+
+        if (req.files['business_logo']) {
+            businessLogo = req.files['business_logo'][0].filename;
+        }
+        if (req.files['business_bg']) {
+            businessBg = req.files['business_bg'][0].filename;
+        }
+    
+
+        await Business.update({
+            business_name:  businessName,
+            business_adress: businessAdress,
+            business_tel: businessTel,
+            business_open: businessOpen,
+            business_close: businessClose,
+            business_ig: businessIg,
+            business_web: businessWeb,
+            business_logo: businessLogo,
+            business_bg: businessBg
+        }, {
+            where: {
+                businessId: businessID
+        }})
+
+
+        res.redirect('/admin')
+    } catch (err) {
+        console.log(err);
+    }
+
+});
 
 // Admin Get Login
 router.get('/login', (req, res) => {
