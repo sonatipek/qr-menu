@@ -20,7 +20,7 @@
             <div class="d-flex flex-column align-items-center">
                 <img src="https://placehold.co/600x400?text=Ürün+Resmi+Yok" alt="ürün resmi" class="img-fluid">
                 
-                <input type="file" name="product_image" id="product_image" class="d-none">
+                <input type="file" name="product_image" id="product_image" class="d-none" accept="image/png, image/jpeg">
                 <label for="product_image" class="text-decoration-none mt-2 text-primary" style="cursor: pointer;">
                     Değiştir <i class="fa-regular fa-pen-to-square"></i>
                 </label>
@@ -72,5 +72,13 @@
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <script>
+        const productImageInput = document.querySelector('#product_image');
+
+        productImageInput.addEventListener('change', _ => {
+            alert("Ürün resmi eklendi. ")
+        });
+    </script>
 </body>
 </html> 
