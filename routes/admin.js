@@ -43,9 +43,17 @@ router.post('/', upload.fields([{ name: 'business_bg'}, { name: 'business_logo'}
 
         if (req.files['business_logo']) {
             businessLogo = req.files['business_logo'][0].filename;
+
+            fs.unlink("./public/img/" + req.body.server_logo, err => {
+                console.log(err);
+            })
         }
         if (req.files['business_bg']) {
             businessBg = req.files['business_bg'][0].filename;
+
+            fs.unlink("./public/img/" + req.body.server_bg, err => {
+                console.log(err);
+            })
         }
     
 
