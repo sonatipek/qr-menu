@@ -5,6 +5,9 @@ const path = require('path');
 const userRoutes = require('./routes/user');
 const adminRoutes = require('./routes/admin');
 
+if (process.env.NODE_ENV == "production") {
+    require('./startup/production')(app);
+}
 
 // Variables
 const PORT = 3000; 
