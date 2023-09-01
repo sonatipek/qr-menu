@@ -251,6 +251,30 @@ router.get('/product/create', async (req, res) => {
     res.render('admin/product-add', {categories: categories});
 });
 
+// Add Product - POST
+router.post('/product/create', upload.single('product_image'), async (req, res) => {
+    try {
+
+        if (req.body.product_title && req.body.product_amount && req.body.product_description && req.body.product_category && req.file) {
+            await Product.create({
+                title: req.body.product_title,
+                amount: req.body.product_amount,
+                description: req.body.product_description,
+                image: req.file.filename,
+                categoryid: req.body.product_category,
+            });
+            res.redirect('/admin/products?action=create');
+        }
+        else{
+            res.redirect('/admin/product/create?action=isNull');
+        }
+            
+
+    } catch (err) {
+        console.error(err)
+    }
+});
+
 
 // !Category Routes
 // Get Category Create Page

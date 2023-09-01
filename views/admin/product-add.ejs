@@ -14,13 +14,13 @@
         <h1 class="h5">Ürün Ekle</h1>
     </div> 
     
-    <form class="row px-4">
+    <form class="row px-4" action="" method="post" enctype="multipart/form-data">
         <div class="col-6">
             <p class="fw-medium mb-2"><small>Ürün Resmi</small></p>
             <div class="d-flex flex-column align-items-center">
                 <img src="https://placehold.co/600x400?text=Ürün+Resmi+Yok" alt="ürün resmi" class="img-fluid">
                 
-                <input type="file" name="product_image" id="product_image" class="d-none" accept="image/png, image/jpeg">
+                <input type="file" name="product_image" id="product_image" class="d-none" accept="image/png, image/jpeg" required>
                 <label for="product_image" class="text-decoration-none mt-2 text-primary" style="cursor: pointer;">
                     Değiştir <i class="fa-regular fa-pen-to-square"></i>
                 </label>
@@ -28,8 +28,8 @@
         </div> 
     
         <div class="col-6">
-            <label for="category" class="form-label fw-medium mb-2"><small>Kategori</small></label>
-            <select id="category" class="form-select">
+            <label for="product_category" class="form-label fw-medium mb-2"><small>Kategori</small></label>
+            <select id="product_category" name="product_category" class="form-select" required>
                 <option value="-1" selected disabled> --SEÇİLMEDİ--</option>
                 <% categories.forEach(category => { %>
                     <option value="<%= category.categoryid %>"><%= category.category_name %></option>
@@ -40,27 +40,27 @@
     
         <div class="row mt-4">
            <div class="col-9">
-                <label for="bussiness_name" class="form-label d-flex align-items-center justify-content-between fw-medium">
+                <label for="product_title" class="form-label d-flex align-items-center justify-content-between fw-medium">
                     <small>Ürün Adı</small>
                     <span class="text-secondary fw-normal"><small><i class="fa-solid fa-circle-exclamation"></i> Örn: Klasik Hamburger</small></span>
                 </label>
-                <input type="text" class="form-control" id="bussiness_name" name="bussiness_name">
+                <input type="text" class="form-control" id="product_title" name="product_title" required>
            </div>
     
            <div class="col-3">
-                <label for="bussiness_name" class="form-label d-flex align-items-center justify-content-between fw-medium">
+                <label for="product_amount" class="form-label d-flex align-items-center justify-content-between fw-medium">
                     <small>Fiyat</small>
                 </label>
-                <input type="text" class="form-control" id="bussiness_name" name="bussiness_name">
+                <input type="number" class="form-control" id="product_amount" name="product_amount" required>
            </div>
         </div>
     
         <div class="mt-4">
-            <label for="business_adress" class="form-label d-flex align-items-center justify-content-between fw-medium">
+            <label for="product_description" class="form-label d-flex align-items-center justify-content-between fw-medium">
                 <small>Açıklama</small>
                 <span class="text-secondary fw-normal"><small><i class="fa-solid fa-circle-exclamation"></i> Ürünün açıklamasını giriniz.</small></span>
             </label>
-            <textarea class="form-control" id="business_adress" name="business_adress" rows="3"></textarea>
+            <textarea class="form-control" id="product_description" name="product_description" rows="3" required></textarea>
         </div>
     
         <div class="row mx-auto my-4">
