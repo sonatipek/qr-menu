@@ -21,10 +21,14 @@
     </div> 
     
     <form class="row px-4" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="productid" value="<%= product.productid %>">
+        
         <div class="col-6">
             <p class="fw-medium mb-2"><small>Ürün Resmi</small></p>
             <div class="d-flex flex-column align-items-center">
+                <input type="hidden" name="server_image" value="<%= product.image %>">
                 <img src="/img/<%= product.image %>" alt="ürün resmi" class="img-fluid">
+
                 <input type="file" name="product_image" id="product_image" class="d-none" accept="image/png, image/jpeg">
                 <label for="product_image" class="text-decoration-none mt-2 text-primary" style="cursor: pointer;">
                     Değiştir <i class="fa-regular fa-pen-to-square"></i>
@@ -33,8 +37,8 @@
         </div> 
     
         <div class="col-6">
-            <label for="category" class="form-label fw-medium mb-2"><small>Kategori</small></label>
-            <select id="category" class="form-select">
+            <label for="product_category" class="form-label fw-medium mb-2"><small>Kategori</small></label>
+            <select id="product_category" name="product_category" class="form-select">
                 <% categories.forEach(category => { %>
                     <% if (product.categoryid == category.categoryid) { %>
                         <option selected value="<%= category.categoryid %>"><%= category.category_name %></option>
@@ -81,5 +85,13 @@
     </form>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+    <script>
+        const productImageInput = document.querySelector('#product_image');
+
+        productImageInput.addEventListener('change', _ => {
+            alert("Ürün resmi eklendi. ")
+        });
+    </script>
 </body>
 </html> 

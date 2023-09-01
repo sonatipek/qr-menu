@@ -227,6 +227,48 @@ router.get('/products/:productid', async (req, res) => {
     res.render('admin/product-edit', {product: product, categories: categories})
 })
 
+// Update Product - POST
+router.post('/products/:productid', upload.single('product_image'), async (req, res) => {
+    const productID = req.params.productid;
+    const productIDServer = req.body.productid;
+    
+    const productTitle = req.body.product_name;
+    const productAmount = req.body.product_amount;
+    const productDesc = req.body.product_description;
+    let productImage = req.body.server_image;
+    const categoryID = req.body.product_category;
+
+    if (req.file) {
+        productImage = req.file.filename;
+
+        fs.unlink("./public/img/" + req.body.server_image, err => {
+            console.log(err);
+        })
+    }
+    
+
+    try {
+        if (productID == productIDServer) {       
+            await Product.update({
+                title: productTitle,
+                amount: productAmount,
+                description: productDesc,
+                image: productImage,
+                categoryid: categoryID,
+            },{
+                where: {
+                    productid: productIDServer
+                }
+            })
+
+            return res.redirect('/admin/products?action=update') 
+        }
+            res.redirect('/admin/products?action=error') 
+    } catch (error) {
+        console.error(error);
+    }
+});
+
 // Delete Product - POST
 router.post('/product/delete/:productid', async (req, res ) =>  {
     try {
