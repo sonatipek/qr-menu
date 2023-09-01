@@ -5,15 +5,17 @@ const path = require('path');
 const userRoutes = require('./routes/user');
 const adminRoutes = require('./routes/admin');
 
-if (process.env.NODE_ENV == "production") {
-    require('./startup/production')(app);
-}
+
 
 // Variables
-const PORT = 3000; 
+const PORT = process.env.PORT || 3000; 
 
 // Create instance
 const app = express()
+
+if (process.env.NODE_ENV == "production") {
+    require('./startup/production')(app);
+}
 
 // Middlewares
 app.use('/libs', express.static(path.join(__dirname, 'node_modules')));
