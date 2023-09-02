@@ -13,9 +13,6 @@ const PORT = process.env.PORT || 3000;
 // Create instance
 const app = express()
 
-if (process.env.NODE_ENV == "production") {
-    require('./startup/production')(app);
-}
 
 // Middlewares
 app.use('/libs', express.static(path.join(__dirname, 'node_modules')));
