@@ -5,6 +5,42 @@
     
 </head>
 <body>
+    <!-- Feedbacks -->
+    <% if (action && action === "update") { %>
+        <div class="text-success px-4 py-3 text-center">
+            <i class="fa-solid fa-circle-check"></i>
+            Değişiklikler kaydedildi.
+        </div>
+    <% } %>
+
+    <% if (action && action === "delete") { %>
+        <div class="text-danger px-4 py-3 text-center">
+            <i class="fa-solid fa-circle-minus"></i>
+            Ürün silindi.
+        </div>
+    <% } %>
+
+    <% if (action && action === "create") { %>
+        <div class="text-success px-4 py-3 text-center">
+            <i class="fa-solid fa-circle-check"></i>
+            Ürün eklendi.
+        </div>
+    <% } %>
+
+    <% if (action && action === "isNull") { %>
+        <div class="text-warning px-4 py-3 text-center">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Ürün bulunamadı.
+        </div>
+    <% } %>
+
+    <% if (action && action === "error") { %>
+        <div class="text-danger  px-4 py-3 text-center">
+            <i class="fa-solid fa-circle-xmark"></i>
+            İşlemde hata. Lütfen yazılımcı ekip ile iletişime geçin.
+        </div>
+    <% } %>
+    <!-- Feedbacks End -->
    
     <div class="w-100 px-4 mt-2">
         <a href="/admin" class="text-dark"><i class="fa-solid fa-chevron-left"></i></a>

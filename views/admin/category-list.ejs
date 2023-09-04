@@ -5,17 +5,53 @@
     
 </head>
 <body>
-  
+    <!-- Feedbacks -->
+    <% if (action && action === "update") { %>
+        <div class="text-success px-4 py-3 text-center">
+            <i class="fa-solid fa-circle-check"></i>
+            Değişiklikler kaydedildi.
+        </div>
+    <% } %>
+
+    <% if (action && action === "delete") { %>
+        <div class="text-danger px-4 py-3 text-center">
+            <i class="fa-solid fa-circle-minus"></i>
+            Kategori silindi.
+        </div>
+    <% } %>
+
+    <% if (action && action === "create") { %>
+        <div class="text-success px-4 py-3 text-center">
+            <i class="fa-solid fa-circle-check"></i>
+            Kategori eklendi.
+        </div>
+    <% } %>
+
+    <% if (action && action === "isNull") { %>
+        <div class="text-warning px-4 py-3 text-center">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            Kategori bulunamadı.
+        </div>
+    <% } %>
+
+    <% if (action && action === "error") { %>
+        <div class="text-danger  px-4 py-3 text-center">
+            <i class="fa-solid fa-circle-xmark"></i>
+            İşlemde hata. Lütfen yazılımcı ekip ile iletişime geçin.
+        </div>
+    <% } %>
+    <!-- Feedbacks End -->
+    
     <div class="w-100 px-4 mt-2">
         <a href="/admin" class="text-dark"><i class="fa-solid fa-chevron-left"></i></a>
     </div>
     
+    
     <div class="d-flex align-items-center justify-content-between px-4 mt-3">
         <h1 class="h5">Kategoriler</h1>
-    
         <a href="/admin/category/create" class="text-decoration-none fw-medium"><small>Kategori Ekle <i class="fa-solid fa-plus"></i></small></a>
-    
     </div>
+
     
     <!-- Kategori Card -->
     <div class="px-4 mt-3">
@@ -25,7 +61,6 @@
                     <span><%= category.category_name %></span>
                     <a href="/admin/categories/<%= category.categoryid %>" class="fw-medium text-decoration-none"><small>Edit</small></a></li>
             </ul>
-
          
         <% }) %>
     </div>

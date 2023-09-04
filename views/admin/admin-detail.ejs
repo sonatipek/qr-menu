@@ -5,6 +5,22 @@
     
 </head>
 <body>
+    <!-- Feedbacks -->
+    <% if (action && action === "update") { %>
+        <div class="text-success px-4 py-3 text-center">
+            <i class="fa-solid fa-circle-check"></i>
+            Değişiklikler kaydedildi.
+        </div>
+    <% } %>
+
+    <% if (action && action === "error") { %>
+        <div class="text-danger  px-4 py-3 text-center">
+            <i class="fa-solid fa-circle-xmark"></i>
+            İşlemde hata. Lütfen yazılımcı ekip ile iletişime geçin.
+        </div>
+    <% } %>
+    <!-- Feedbacks End -->
+
     <!-- Menü İşlemleri -->
     <div class="px-4 mb-4 mt-3"> 
         <h1 class="h5 fw-semibold">Menü İşlemleri</h1>
