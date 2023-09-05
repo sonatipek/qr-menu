@@ -275,12 +275,17 @@ router.post('/products/:productid', upload.single('product_image'), async (req, 
 router.post('/product/delete/:productid', async (req, res ) =>  {
     try {
         const productID = req.params.productid;
+        const product = await Product.findByPk(productID,{raw:true});
 
         await Product.destroy({
             where:{
                 productid: productID
             }
         });
+
+        fs.unlink("./public/img/" + product.image, err => {
+            console.log(err);
+        })
 
         res.redirect('/admin/products?action=delete')
     } catch (err) {
