@@ -14,12 +14,32 @@
     <div class="d-flex align-items-center justify-content-between px-4 mt-3">
         <h1 class="h5">Edit</h1>
     
-        <form action="/admin/product/delete/<%= product.productid %>" method="post">
-            <button type="submit" class="btn fw-medium text-danger"><small>Ürünü Sil</small></button>
-        </form>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn fw-medium text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <small>Ürünü Sil</small>
+        </button>
 
     </div> 
     
+    <form action="/admin/product/delete/<%= product.productid %>" method="post">
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Silmek istediğinize emin misiniz?</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary rounded-1" data-bs-dismiss="modal">İptal</button>
+                        <button type="submit" class="btn btn-danger rounded-1">Ürünü Sil</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </form>
+
     <form class="row px-4" method="post" enctype="multipart/form-data">
         <input type="hidden" name="productid" value="<%= product.productid %>">
         
