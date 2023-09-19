@@ -2,6 +2,7 @@
     <h2 class="h5 fw-medium mb-0">Kategoriler</h2>
 
     <div class="d-flex text-nowrap align-items-center gap-3 overflow-x-scroll" style="height: 10vh;">
+        <a href="/" class="text-decoration-none text-dark">Tüm Ürünler</a>
         <% categories.forEach(category => { %>
             <% if (selectedCategory == category.categoryid) { %>
                 <a href="/<%= category.categoryid %>" class="btn btn-dark rounded-5 py-2"><%= category.category_name %></a>

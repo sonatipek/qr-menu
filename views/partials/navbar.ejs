@@ -1,10 +1,10 @@
 <% if (business) { %>
-    <div id="place_img" class="position-relative" style="background-image: url('/img/<%= business.business_bg %>')">
+    <div id="place_img" class="position-relative" style="background-image: url('/img/<%= business.business_bg %>');">
       <div class="position-absolute">
         <div class="d-flex justify-content-between align-items-center px-4" style="height: 8vh; width: 100vw;">
           <a href="<%= business.business_ig %>" target="_blank"><i class="fa-brands fa-instagram text-white fs-5"></i></a>
           
-          <div class="d-flex flex-column align-items-center mt-5">
+          <div class="d-flex flex-column align-items-center mt-5" style="margin-top: 4.5rem !important">
               <img src="/img/<%= business.business_logo %>" alt="logo" class="rounded-circle border border-3 border-light mt-5" style="height: 5rem; width: 5rem;">
               <h1 class="text-white fw-medium fs-5 mt-3"><%= business.business_name %></h1>
           </div>
@@ -36,7 +36,7 @@
     </div>
 
  <% } else { %>
-  <div id="place_img" class="position-relative" style="background-image: url('https://placehold.co/600x400?text=Arka+Plan+Buraya')">
+  <div id="place_img" class="position-relative" style="background-image: url('https://placehold.co/600x400?text=Arka+Plan+Buraya');">
     <div class="position-absolute">
       <div class="d-flex justify-content-between align-items-center px-4" style="height: 8vh; width: 100vw;">
         <a href="#" target="_blank"><i class="fa-brands fa-instagram text-white fs-5"></i></a>

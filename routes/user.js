@@ -7,8 +7,9 @@ const router = express.Router();
 // Controller
 const userController = require('../controller/user');
 
-router.use('/:categoryid', userController.productsByCategory);
+router.get("/", userController.homepage);
 
-router.use("/", userController.homepage);
+router.get('/:categoryid', userController.productsByCategory);
+
 
 module.exports=router;

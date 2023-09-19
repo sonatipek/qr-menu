@@ -24,10 +24,37 @@
     <%- include('../partials/navbar') %>
 
     <!-- Categories -->
-    <%- include('../partials/categories') %>
+    <div class="ms-4 me-3 mt-3">
+        <h2 class="h5 fw-medium mb-0">Kategoriler</h2>
+    
+        <div class="d-flex text-nowrap align-items-center gap-3 overflow-x-scroll" style="height: 10vh;">
+            <a href="/" class="btn btn-dark rounded-5 py-2">Tüm Ürünler</a>
+            <% categories.forEach(category => { %>
+                <a href="/<%= category.categoryid %>" class="text-decoration-none text-dark"><%= category.category_name %></a>
+
+            <% }) %>
+        </div>
+    </div>
 
     <!-- Cateogry Detail -->
-    <%- include('../partials/category-detail') %>
+    <div class="px-4 mt-4">
+        <h3 class="h2 fw-semibold mb-3">Tüm Ürünler</h3>
+
+        <!-- Card -->
+        <% products.forEach(product => { %>
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <img src="/img/<%= product.image %>" alt="İçerik resmi" style="width: 4rem; height: 3.5rem;">
+            
+                <div id="content" class="d-flex flex-column align-items-start justify-content-around> ms-2 overflow-y-scroll text-start" style="height: 3.5rem;">
+                    <h4 class="h6 m-0"><small><%= product.title %></small></h4>
+                    <p class="text-secondary lh-1"><small><%= product.description %></small></p>
+                </div>
+            
+                <p class="fw-bold ms-auto"><%= product.amount %>TL</p>
+            </div>
+        <% }) %>
+    
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
 </body>

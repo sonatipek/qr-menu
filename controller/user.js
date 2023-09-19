@@ -3,6 +3,19 @@ const Product = require('../models/product');
 const Category = require('../models/category');
 const Business = require('../models/business');
 
+exports.homepage = async (req, res) => {
+    const categories = await Category.findAll({raw: true});
+    const business = await Business.findAll({raw: true});
+    const products = await Product.findAll({
+        raw: true,
+    });
+    try {
+        res.render('pages/index', {products: products, categories: categories, business: business[0]})
+        
+    } catch (err) {
+        console.log(err);
+    }  
+}
 
 exports.productsByCategory = async (req, res) => {
     try {
@@ -16,17 +29,9 @@ exports.productsByCategory = async (req, res) => {
         const categories = await Category.findAll({raw: true});
         const business = await Business.findAll({raw: true});
         
-        res.render("pages/index", {products: products, categories: categories, selectedCategory: categoryid, business: business[0]});
+        res.render("pages/products-list", {products: products, categories: categories, selectedCategory: categoryid, business: business[0]});
     } catch (err) {
         console.log(err);
     }
 }
 
-exports.homepage = async (req, res) => {
-    try {
-        res.redirect(301, "/1");
-        
-    } catch (err) {
-        console.log(err);
-    }  
-}

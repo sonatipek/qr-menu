@@ -2,11 +2,11 @@
     <div class="d-flex align-items-center justify-content-between mb-3">
         <img src="/img/<%= product.image %>" alt="İçerik resmi" style="width: 4rem; height: 3.5rem;">
     
-        <div id="content" class="d-flex flex-column justify-content-between ms-2 overflow-y-scroll" style="height: 3.5rem;">
+        <div id="content" class="d-flex flex-column align-items-start justify-content-around ms-2 overflow-y-scroll text-start" style="height: 3.5rem;">
             <h4 class="h6 m-0"><small><%= product.title %></small></h4>
             <p class="text-secondary lh-1"><small><%= product.description %></small></p>
         </div>
     
-        <p class="fw-bold"><%= product.amount %>TL</p>
+        <p class="fw-bold ms-auto"><%= product.amount %>TL</p>
     </div>
 <% }) %>
