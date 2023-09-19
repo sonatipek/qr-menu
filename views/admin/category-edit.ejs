@@ -15,15 +15,15 @@
 
         <!-- Button trigger modal -->
         <button type="button" class="btn fw-medium text-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <small>Ürünü Sil</small>
+            <small>Kategoriyi Sil</small>
         </button>
     </div> 
 
     <form action="/admin/category/delete/<%= category.categoryid %>" method="post">
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
+        <div class="modal fade mt-5 pt-5" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog mt-5 pt-5">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="exampleModalLabel">Silmek istediğinize emin misiniz?</h1>
@@ -31,7 +31,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary rounded-1" data-bs-dismiss="modal">İptal</button>
-                        <button type="submit" class="btn btn-danger rounded-1">Ürünü Sil</button>
+                        <button type="submit" class="btn btn-danger rounded-1">Kategoriyi Sil</button>
                     </div>
                 </div>
             </div>
