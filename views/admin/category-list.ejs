@@ -55,6 +55,9 @@
     
     <!-- Kategori Card -->
     <div class="px-4 mt-3">
+        <% if (categories.length <= 0) { %>
+            <p class="text-secondary text-center px-5">Kategori bulunmamaktadır. Eklemek için <a href="/admin/category/create" class="text-decoration-none fw-medium">Kategori Ekle</a>'ye basınız.</p>
+        <% } %>
         <% categories.forEach(category => { %>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex justify-content-between align-items-center border-bottom">

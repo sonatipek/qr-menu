@@ -6,6 +6,7 @@ const Product = require('../models/product');
 const Category = require('../models/category');
 const Business = require('../models/business');
 const Users = require('../models/users');
+const sequelize = require('../data/db');
 
 // Admin Dashboard
 exports.getAdminDashboard = async (req, res) => {
@@ -147,6 +148,7 @@ exports.getCategoryList = async (req, res) => {
     const categories = await Category.findAll({raw:true});
     
     res.render('admin/category-list', {categories: categories, action});
+
 }
 
 exports.getCategoryUpdate = async (req, res) => {

@@ -55,6 +55,9 @@
     
     <!-- Ürün Card -->
     <div class="px-4 mt-3 accordion accordion-flush" id="accordionFlushExample">
+        <% if (categories.length <= 0) { %>
+            <p class="text-secondary text-center px-5">Kategori bulunmadığı için ürünler listelenememektedir. İl önce kategori eklemek için <a href="/admin/category/create" class="text-decoration-none fw-medium">Kategori Ekle</a>'ye basınız.</p>
+        <% } %>
         <% categories.forEach(category=> { %>
 
             <div class="accordion-item">
@@ -67,6 +70,7 @@
                     <div class="accordion-body">
                         <ul class="list-group list-group-flush">
                             <% products.forEach(product => { %>
+                                
                                 <% if (category.categoryid == product.categoryid) { %>
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <span><%= product.title %></span>
