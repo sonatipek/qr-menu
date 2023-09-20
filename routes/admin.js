@@ -15,6 +15,9 @@ router.get('/', adminController.getAdminDashboard);
 
 router.post('/', upload.fields([{ name: 'business_bg'}, { name: 'business_logo'}]), adminController.updateAdminDashboard);
 
+router.post('/logo-delete', adminController.deleteLogo);
+router.post('/background-delete', adminController.deleteBg);
+
 router.get('/login', adminController.getLoginPage);
 
 router.post('/login', adminController.postLoginPage);

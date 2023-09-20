@@ -107,6 +107,40 @@ exports.postLoginPage = async (req, res) => {
     }
 }
 
+exports.deleteLogo = async (req, res) => {
+    try {
+        const business = await Business.findOne({raw:true});
+
+
+        fs.unlink("./public/img/" + business.business_logo, err => {
+            console.log(err);
+        });
+
+
+        return res.redirect('/admin?action=update')
+
+    } catch (error) {
+     console.log(error);   
+    }
+}
+
+exports.deleteBg = async (req, res) => {
+    try {
+        const business = await Business.findOne({raw:true});
+
+
+        fs.unlink("./public/img/" + business.business_bg, err => {
+            console.log(err);
+        });
+
+
+        return res.redirect('/admin?action=update')
+
+    } catch (error) {
+     console.log(error);   
+    }
+}
+
 // Category Controllers
 exports.getCategoryList = async (req, res) => {
     const action = req.query.action;

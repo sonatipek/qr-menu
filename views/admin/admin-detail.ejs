@@ -94,7 +94,14 @@
             <!-- Logo ve Arka Plan -->
             <div class="d-flex align-items-center justify-content-between px-4 mt-4">
                 <div>
-                    <h1 class="h5 fw-medium">Logo</h1>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h1 class="h5 fw-medium">Logo</h1>
+
+                        <button type="button" class="btn fw-medium text-danger" data-bs-toggle="modal" data-bs-target="#modalLogoDelete">
+                            <small>Logo Sil</small>
+                        </button>
+
+                    </div>
                     <div class="d-flex flex-column align-items-center justify-content-center">
                         <input type="hidden" name="server_logo" value="<%= businessInformations.business_logo %>">
                         <img src="/img/<%= businessInformations.business_logo %>" class="img-fluid" alt="Mekan logosu" style="height: 8.8rem; width: 9.75rem;">
@@ -108,7 +115,14 @@
                 </div>
         
                 <div>
-                    <h1 class="h5 fw-medium">Arka Plan</h1>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h1 class="h5 fw-medium">Arka Plan</h1>
+
+                        <button type="button" class="btn fw-medium text-danger" data-bs-toggle="modal" data-bs-target="#modalBgDelete">
+                            <small>Arka Plan Sil</small>
+                        </button>
+
+                    </div>
                     <div class="d-flex flex-column align-items-center justify-content-center">
                         <input type="hidden" name="server_bg" value="<%= businessInformations.business_bg %>">
                         <img src="/img/<%= businessInformations.business_bg %>" class="img-fluid" alt="Mekan arka plan resmi" style="height: 8.8rem; width: 9.75rem;">
@@ -129,6 +143,41 @@
                 <button type="submit" class="col-8 btn btn-secondary px-4 py-3 fw-medium">Değişiklikleri Kaydet</button>
             </div>
     
+        </form>
+
+        <!-- Modals -->
+        <form method="post" action="/admin/logo-delete">
+            <div class="modal fade mt-5 pt-5" id="modalLogoDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog mt-5 pt-5">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Silmek istediğinize emin misiniz?</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary rounded-1" data-bs-dismiss="modal">İptal</button>
+                            <button type="submit" class="btn btn-danger rounded-1">Logoyu Sil</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form method="post" action="/admin/background-delete">
+            <div class="modal fade mt-5 pt-5" id="modalBgDelete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog mt-5 pt-5">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Silmek istediğinize emin misiniz?</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary rounded-1" data-bs-dismiss="modal">İptal</button>
+                            <button type="submit" class="btn btn-danger rounded-1">Arka Planı Sil</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
         
         <% } else { %>
