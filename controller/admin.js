@@ -8,6 +8,7 @@ const Business = require('../models/business');
 const Users = require('../models/users');
 const sequelize = require('../data/db');
 
+
 // Admin Dashboard
 exports.getAdminDashboard = async (req, res) => {
     const action = req.query.action;
@@ -74,6 +75,9 @@ exports.updateAdminDashboard = async (req, res) => {
 }
 
 exports.getLoginPage = (req, res) => {
+    if (req.session.isAuth === true) {
+        res.redirect('/admin?action=login')
+    }
     res.render('admin/index')
 }
 
@@ -101,6 +105,7 @@ exports.postLoginPage = async (req, res) => {
                 message: "Parola hatalı!"
             })
         }
+        req.session.isAuth = true;
         res.redirect('/admin?action=login')
 
     } catch (error) {

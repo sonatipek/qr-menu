@@ -31,7 +31,7 @@ const Product = sequelize.define("products", {
 });
 
 async function syncSQL() {
-    await Product.sync({alter: true})
+    await Product.sync({force: true})
     console.info("Blog table is added!")
 
     const count = await Product.count()
